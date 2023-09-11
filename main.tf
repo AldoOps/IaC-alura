@@ -40,10 +40,16 @@ resource "aws_security_group" "demo-sg" {
 }
 
 resource "aws_instance" "webserver" {
-  ami                    = "ami-0eb260c4d5475b901"
-  instance_type          = "t2.micro"
-  key_name               = "iac-alura"
-  tags                   = {
-    Name = "ExampleEC2WebServer"
+  ami           = "ami-0eb260c4d5475b901"
+  instance_type = "t2.micro"
+  key_name      = "iac-alura"
+#  user_data = <<-EOF
+#                #!/bin/bash
+#                cd /home/ubuntu
+#                echo “<h1>Feito com Terraform</h1>” > index.html
+#                nohup busybox httpd -f -p 8080 &
+#                EOF
+  tags = {
+    Name = "Teste Aws"
   }
 }
